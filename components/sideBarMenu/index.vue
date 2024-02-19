@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {list} from "postcss";
+
 const data =ref({
   Features:[
     {
@@ -79,13 +81,24 @@ const data =ref({
     },
   ]
 })
+onMounted(()=>{
+  const listMenu = document.querySelectorAll('a.js-arrow')
+  const show = document.querySelectorAll('.navbar__sub-list.js-sub-list')
+    for(let i = 0 ; i < listMenu.length ; i++ ){
+      console.log(i)
+      listMenu[i].addEventListener("click" , ()=>{
+        console.log(show[i])
+        show[i-1].classList.toggle("show")
+      })
+  }
+})
 </script>
 
 <template>
   <nav class="navbar-sidebar2 navbar-sidebar3">
     <ul class="list-unstyled navbar__list">
       <li class="active has-sub">
-        <nuxt-link class="js-arrow text-decoration-none" to="#">
+        <nuxt-link class="js-arrow text-decoration-none" to="">
           <i class="fas fa-tachometer-alt"></i>Dashboard
         </nuxt-link>
       </li>
@@ -96,12 +109,12 @@ const data =ref({
         <span class="inbox-num">3</span>
       </li>
       <li>
-        <nuxt-link class="text-decoration-none" to="#">
+        <nuxt-link class="text-decoration-none" to="">
           <i class="fas fa-shopping-basket"></i>eCommerce
         </nuxt-link>
       </li>
       <li class="has-sub">
-        <nuxt-link class="js-arrow text-decoration-none" to="#">
+        <nuxt-link  class="js-arrow text-decoration-none" to="">
           <i class="fas fa-trophy"></i>Features
           <span class="arrow">
             <i class="fas fa-angle-down"></i>
@@ -114,7 +127,7 @@ const data =ref({
         </ul>
       </li>
       <li class="has-sub">
-        <nuxt-link class="js-arrow text-decoration-none" to="#">
+        <nuxt-link  class="js-arrow text-decoration-none" to="">
           <i class="fas fa-copy"></i>Pages
           <span class="arrow">
             <i class="fas fa-angle-down"></i>
@@ -127,7 +140,7 @@ const data =ref({
         </ul>
       </li>
       <li class="has-sub">
-        <nuxt-link class="js-arrow text-decoration-none" to="#">
+        <nuxt-link  class="js-arrow text-decoration-none" to="">
           <i class="fas fa-desktop"></i>UI Elements
           <span class="arrow">
             <i class="fas fa-angle-down"></i>
@@ -144,5 +157,7 @@ const data =ref({
 </template>
 
 <style scoped>
-
+.show{
+  display: block;
+}
 </style>

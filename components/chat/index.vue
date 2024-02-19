@@ -63,7 +63,7 @@ const data = ref({
           </div>
         </div>
         <div class="au-chat-textfield">
-          <form class="au-form-icon">
+          <form class="au-form-icon ">
             <input class="au-input au-input--full au-input--h65 text-start" type="text"
                    :placeholder="data.placeHolder">
             <button class="au-input-icon">
